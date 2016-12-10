@@ -1,7 +1,5 @@
 В этом репозитории, находятся файлы и комманды, для первоначальной установки и настройки фреймфорка yii2 advanced version
 
-
-
 Все комманды выполняются в коммандной строке, из папки с проектом и прописанными путями до обработчика PHP
 
 Качаем composer
@@ -18,7 +16,7 @@ php -r "unlink('composer-setup.php');"
 
 
 
-после установки composer 
+после установки composer
 install the Composer Asset Plugin:
 
 php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"
@@ -39,14 +37,14 @@ php composer.phar create-project yiisoft/yii2-app-advanced advanced 2.0.10
 отвечаем на вопросы установки
 Which environment do you want the application to be initialized in?
 
-  [0] Development
-  [1] Production
+[0] Development
+[1] Production
 
-  Your choice [0-1, or "q" to quit] 0
-  
-   Initialize the application under 'Development' environment? [yes|no] y
-   
-   ... initialization completed.
+Your choice [0-1, or "q" to quit] 0
+
+Initialize the application under 'Development' environment? [yes|no] y
+
+... initialization completed.
 
 Далее закидываем файлы .htaccess для правильной маршрутизации для папки frontend и backend
 
@@ -55,48 +53,48 @@ frontend/web/.htaccess - положить с указанной вложенно
 
 заходим в backend/config/main.php в requests дописываем
 'request' => [
-            'csrfParam' => '_csrf-backend',
-            'baseUrl'=>'/admin',
-        ],
-		
+'csrfParam' => '_csrf-backend',
+'baseUrl'=>'/admin',
+],
+
 Раскоментить urlManager
 
 Если необходима куки валидация дописываем в request
 // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'yourcookievalidationkey',
-			
+'cookieValidationKey' => 'yourcookievalidationkey',
+
 Взять можно в backend/config/main-local.php
 
 
 
 в commom/config/main.php при необходимости настраиваем БД
 'components' => [
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
-        'db' => [
-            'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=dbname',
-            'username' => 'username',
-            'password' => 'password',
-            'charset' => 'utf8',
-            'tablePrefix' => 'tablePrefix_'
-        ],
-    ],
-		
-		
+'cache' => [
+'class' => 'yii\caching\FileCache',
+],
+'db' => [
+'class' => 'yii\db\Connection',
+'dsn' => 'mysql:host=localhost;dbname=dbname',
+'username' => 'username',
+'password' => 'password',
+'charset' => 'utf8',
+'tablePrefix' => 'tablePrefix_'
+],
+],
+
+
 заходим в frontend/config/main.php в requests дописываем
 
 'request' => [
-            'csrfParam' => '_csrf-frontend',
-            'baseUrl' => '',
-        ],
+'csrfParam' => '_csrf-frontend',
+'baseUrl' => '',
+],
 
 
 Если необходима куки валидация дописываем в request
 // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'yourcookievalidationkey',
-			
+'cookieValidationKey' => 'yourcookievalidationkey',
+
 Взять можно в frontend/config/main-local.php
 
 Раскоментить urlManager
